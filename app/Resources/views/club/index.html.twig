@@ -1,0 +1,40 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Clubs {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Clubs :</h1>
+        <table class="table table-hover">
+            <thead>
+            <tr class="table-dark">
+                <th scope="col">Id :</th>
+                <th scope="col">Nom :</th>
+                <th scope="col">Description :</th>
+                <th scope="col">Adresse :</th>
+                <th scope="col">Domaine :</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for club in clubs %}
+            <tr> <a href=""></a>
+                <th scope="row"><span class="badge badge-primary badge-pill"><a href="{{ path('club_show', { 'id': club.id }) }}">{{ club.id }}</a></span></th>
+                <td>{{ club.nom }}</td>
+                <td>{{ club.description }}</td>
+                <td>{{ club.domain }}</td>
+                <td>{{ club.adresse }}</td>
+                <td><button type="button" class="btn btn-danger">Supprimer</button></td>
+                <td><button type="button" class="btn btn-secondary" onclick="{{ path('club_edit', { 'id': club.id }) }}">Modifier</button></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <ul>
+            <li>
+                <a href="{{ path('club_new') }}">Create a new club</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

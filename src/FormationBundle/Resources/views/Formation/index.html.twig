@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Formations {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="page-header" id="banner">
+            <div class="row">
+                <div class="col-lg-8 col-md-7 col-sm-6">
+                    <h1>Formations :</h1>
+                    <p class="lead">Les formations disponibles :</p>
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-6">
+                    <div class="sponsor">
+                        <script async="" type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIE23N&amp;placement=bootswatchcom" id="_carbonads_js"></script>
+                    </div>
+                    <button class="source-button btn btn-primary btn-xs" role="button" tabindex="0">Ajouter une formation</button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <tr class="table-dark">
+                <th scope="col">Ref :</th>
+                <th scope="col">Titre :</th>
+                <th scope="col">Description :</th>
+                <th scope="col">Date de Début :</th>
+                <th scope="col">Date de Fin :</th>
+                <th scope="col">Nombre de participants :</th>
+                <th scope="col">Nombre de participants :</th>
+                <th scope="col">Club associé :</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for formation in formations %}
+            <tr> <a href=""></a>
+                <th scope="row"><span class="badge badge-primary badge-pill">{{ formation.ref }}</span></th>
+                <td>{{ formation.titre }}</td>
+                <td>Column content</td>
+                <td>Column content</td>
+                <td>Column content</td>
+                <td><button type="button" class="btn btn-danger">Supprimer</button></td>
+                <td><button type="button" class="btn btn-secondary">Modifier</button></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

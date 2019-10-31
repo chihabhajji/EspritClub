@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+
+{% block title %} Formations {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="page-header" id="banner">
+            <div class="row">
+                <div class="col-lg-8 col-md-7 col-sm-6">
+                    <h1>Formations :</h1>
+                    <p class="lead">Les formations disponibles :</p>
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-6">
+                    <div class="sponsor">
+                        <script async="" type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIE23N&amp;placement=bootswatchcom" id="_carbonads_js"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <tr class="table-dark">
+                <th scope="col">Ref :</th>
+                <th scope="col">Titre :</th>
+                <th scope="col">Description :</th>
+                <th scope="col">Date de Début :</th>
+                <th scope="col">Date de Fin :</th>
+                <th scope="col">Nombre de participants :</th>
+                <th scope="col">Club associé :</th>
+                <th scope="col">&nbsp;</th>
+                <th scope="col">&nbsp;</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for formation in formations %}
+                <tr>
+                    <th scope="row"><span class="badge badge-primary badge-pill"><a href="{{ path('formation_show', { 'ref': formation.ref }) }}">{{ formation.ref }}</a></span></th>
+                    <td>{{ formation.titre }}</td>
+                    <td>{{ formation.description }}</td>
+                    <td>{% if formation.datedebut %}{{ formation.datedebut|date('Y-m-d H') }}{% endif %}</td>
+                    <td>{% if formation.datefin %}{{ formation.datefin|date('Y-m-d H') }}{% endif %}</td>
+                    <td>{{ formation.nbrParticipant }}</td>
+                    <td></td>
+                    <td><button type="button" class="btn btn-danger" >Supprimer</button></td>
+                    <td><button type="button" class="btn btn-secondary" onClick="{{ path('formation_edit', { 'ref': formation.ref }) }}">Modifier</button></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <ul>
+            <li>
+                <a href="{{ path('formation_new') }}">Create a new formation</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
